@@ -1,6 +1,6 @@
 from persistent_storage.model import Aluno
 from persistent_storage.model import Combinacao
-from persistent_storage.model import Linkedin
+from persistent_storage.model import Escavador
 
 
 def f_save_aluno(name=None, sex=None, birth_date=None, year_start=None, year_end=None):
@@ -285,9 +285,9 @@ def f_update_combinacao(id=None, aluno_id=None, name=None, is_scrapered=False, q
 
 
 
-def f_save_linkedin(combinacao_id=None, aluno_id=None, profile_name=None, profile_url=None, date=None, profile_page=None, profile_json=None):
+def f_save_escavador(combinacao_id=None, aluno_id=None, profile_name=None, profile_url=None, date=None, profile_page=None, profile_json=None):
     '''
-    Salva os dados de web scraping na tabela Linkedin.\n
+    Salva os dados de web scraping na tabela Escavador.\n
     Os argumentos enviados como None (não preenchidos) serão armazenados como "null".
     
     Parâmetro
@@ -315,10 +315,10 @@ def f_save_linkedin(combinacao_id=None, aluno_id=None, profile_name=None, profil
     '''      
     
     try:
-        perfis = f_get_linkedin(profile_url= profile_url)
+        perfis = f_get_escavador(profile_url= profile_url)
         if ( len(perfis) == 0):
-            linkedin =  Linkedin.create(combinacao_id= combinacao_id, aluno_id= aluno_id, profile_name= profile_name,  profile_url= profile_url, date= date, profile_page= profile_page, profile_json= profile_json )
-            return linkedin
+            escavador =  Escavador.create(combinacao_id= combinacao_id, aluno_id= aluno_id, profile_name= profile_name,  profile_url= profile_url, date= date, profile_page= profile_page, profile_json= profile_json )
+            return escavador
         return False
     except Exception as e:
         print(e)
@@ -328,9 +328,9 @@ def f_save_linkedin(combinacao_id=None, aluno_id=None, profile_name=None, profil
 
 
 
-def f_get_linkedin(id=None, profile_url=None, date=None, profile_json=""):
+def f_get_escavador(id=None, profile_url=None, date=None, profile_json=""):
     '''
-    Retorna os dados dos registros encontrados na tabela Linkedin de acordo com os argumentos informados.\n
+    Retorna os dados dos registros encontrados na tabela Escavador de acordo com os argumentos informados.\n
     Os argumentos enviados como None não serão considerados na consulta.\n
     Ainda, se nenhum argumento for informado retorna todos os registros da tabela.
     
@@ -348,35 +348,35 @@ def f_get_linkedin(id=None, profile_url=None, date=None, profile_json=""):
     Retorno
     ----------
         list_aluno (list): 
-            Lista com os registros de web scraping do linkedin encontrados.
+            Lista com os registros de web scraping do escavador encontrados.
     ''' 
-    list_linkedin = []    
+    list_escavador = []    
     try:
-        linkedin_result = None
+        escavador_result = None
         if id!=None:
-            linkedin_result = Linkedin.select().where( Linkedin.id == id ).order_by( Linkedin.id )            
+            escavador_result = Escavador.select().where( Escavador.id == id ).order_by( Escavador.id )            
         elif profile_url != None:
-            linkedin_result = Linkedin.select().where( Linkedin.profile_url == profile_url ).order_by( Linkedin.id )    
+            escavador_result = Escavador.select().where( Escavador.profile_url == profile_url ).order_by( Escavador.id )    
         elif date != None:
-            linkedin_result = Linkedin.select().where( Linkedin.date == date ).order_by( Linkedin.id )
+            escavador_result = Escavador.select().where( Escavador.date == date ).order_by( Escavador.id )
         elif profile_json != "":
-            linkedin_result = Linkedin.select().where( Linkedin.profile_json == profile_json ).order_by( Linkedin.id )
+            escavador_result = Escavador.select().where( Escavador.profile_json == profile_json ).order_by( Escavador.id )
         else:
-            linkedin_result = Linkedin.select().order_by( Linkedin.id )    
+            escavador_result = Escavador.select().order_by( Escavador.id )    
         
-        for row  in linkedin_result.dicts():
-            list_linkedin.append(row)
-        return list_linkedin
+        for row  in escavador_result.dicts():
+            list_escavador.append(row)
+        return list_escavador
     except Exception as e:
         print(e)
-        return list_linkedin
+        return list_escavador
 
 
 
 
-def f_update_linkedin(id=None, aluno_id=None, profile_url=None, date=None, profile_page=None, profile_json=None):
+def f_update_escavador(id=None, aluno_id=None, profile_url=None, date=None, profile_page=None, profile_json=None):
     '''
-    Atualiza os dados do registro da combinacao na tabela Linkedin de acordo com o id informado.\n
+    Atualiza os dados do registro da combinacao na tabela Escavador de acordo com o id informado.\n
     Os argumentos enviados como None (não preenchidos) serão armazenados como "null".
    
     Parâmetro
@@ -401,7 +401,7 @@ def f_update_linkedin(id=None, aluno_id=None, profile_url=None, date=None, profi
     
     try:
         if id!=None and profile_url!=None and date!=None:
-            query = Linkedin.update( profile_url= profile_url, aluno_id= aluno_id, date= date, profile_page= profile_page, profile_json= profile_json).where(Linkedin.id == id)
+            query = Escavador.update( profile_url= profile_url, aluno_id= aluno_id, date= date, profile_page= profile_page, profile_json= profile_json).where(Escavador.id == id)
             query.execute()
             return True
         raise Exception ('O valor id, profile_url ou date não foram informado!')
