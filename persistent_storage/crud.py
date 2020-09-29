@@ -1,6 +1,13 @@
 from persistent_storage.model import Aluno
 from persistent_storage.model import Combinacao
 from persistent_storage.model import Escavador
+import logging
+import logging.config
+
+# Definicao de log
+logging.config.fileConfig('logconf.ini', disable_existing_loggers=False)
+logger = logging.getLogger(__name__)
+msg_error = "Erro: "+__name__+".py - {}: {}. Para mais detalhes verifique o arquivo 'error.log'."
 
 
 def f_save_aluno(name=None, sex=None, birth_date=None, year_start=None, year_end=None):
@@ -33,9 +40,10 @@ def f_save_aluno(name=None, sex=None, birth_date=None, year_start=None, year_end
             return Aluno.create(name= name, birth_date= birth_date, sex= sex, year_start= year_start, year_end= year_end )
         return False
     except Exception as e:
-        print(e)
+        if '"aluno" violates check constraint "aluno_sex_check"' in str(e):
+            print("Erro: O sexo do aluno não foi informado!")
+        logger.error(" f_save_aluno " + str(e) )
         return False
-
 
 
 def f_get_aluno(id=None, name=None, birth_date=None):

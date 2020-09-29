@@ -20,7 +20,7 @@ def timeout(seconds):
 
 # alterado a partir daqui
 
-@timeout(10)
+@timeout(60)
 def keyboard_reading(text):
     print(text, end="")
     return input()
@@ -29,7 +29,7 @@ def get_answer(msg=""):
     result = keyboard_reading(msg)
 
     if isinstance(result, TimeoutError):
-        return None
+        return False
     else:
         return result
 

@@ -1,0 +1,4 @@
+peewee==3.13.1
+psycopg2==2.8.4
+selenium==3.141.0
+beautifulsoup4==4.9.1

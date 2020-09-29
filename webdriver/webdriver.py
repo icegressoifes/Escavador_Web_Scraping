@@ -1,6 +1,14 @@
 from selenium import webdriver
 import random
 import platform
+import logging
+import logging.config
+import traceback
+
+# Definicao de log
+logging.config.fileConfig('logconf.ini', disable_existing_loggers=False)
+logger = logging.getLogger(__name__)
+msg_error = "\nErro: "+__name__+".py - {}: {}. Para mais detalhes verifique o arquivo 'error.log'."
 
 
 def f_open_browser(driver=None, proxy=None):
@@ -9,7 +17,8 @@ def f_open_browser(driver=None, proxy=None):
 		driver.quit()
 	except:
 		pass
-	finally:
+	
+	try:
 		options = webdriver.ChromeOptions()
 		userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36' if platform.system() == "Windows" else "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36"
 		options.add_argument('user-agent={}'.format(userAgent))	
@@ -20,6 +29,9 @@ def f_open_browser(driver=None, proxy=None):
 		diretorio = './chromedriver.exe' if platform.system() == "Windows" else "./chromedriver"
 		driver = webdriver.Chrome(options=options, executable_path=r'{}'.format(diretorio))
 		return driver
+	except:
+		print(msg_error.format("função f_open_browser", "Não conseguiu abrir o navegador"))
+		logger.error( traceback.format_exc() )
 
 def f_close_browser(driver=None):
 	try:

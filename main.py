@@ -27,7 +27,7 @@ import traceback
 # Definicao de log
 logging.config.fileConfig('logconf.ini', disable_existing_loggers=False)
 logger = logging.getLogger("main")
-msg_error = "Erro: main.py - {}: {}. Para mais detalhes verifique o arquivo 'error.log'."
+msg_error = "\nErro: main.py - {}: {}. Para mais detalhes verifique o arquivo 'error.log'."
 
 
 def f_confirmation():
@@ -51,61 +51,86 @@ def f_main(args):
     '''
     
     help = '''
-    app_bd_create             Cria as tabelas do banco de dados 
-    app_bd_drop               Apaga as tabelas do banco de dados
-    app_loading_initial       Carrega os dados da planilha
-    app_web_scraping          Inicia a coleta de dados dos egressos
-    app_attach_label          Anexa rótulos nos dados coletados
-    help                      Ajuda                                          
+    Comando esperado: python3 main.py <argumento>
+    
+    ----------------------------------------------------------------------------
+    Argumento básico
+    ----------------------------------------------------------------------------
+    cria_base                         Cria banco de dados
+    apaga_base                        Apaga banco de dados
+    carrega_planilha                  Carrega os dados da planilha sem cabeçalho,
+                                      ou seja, armazena a primeira linha
+    coleta_dados                      Inicia a coleta de dados dos egressos
+    marca_dados                       Anexa rótulos nos dados coletados
+    ajuda                             Mensagem de ajuda                
+    
+    ----------------------------------------------------------------------------
+    Argumento composto
+    ----------------------------------------------------------------------------
+    carrega_planilha com_cabecalho    Carrega os dados da planilha com cabeçalho,
+                                      ou seja, ignora a primeira linha
+    coleta_dados login                Abre navegador na página de login
+    marca_dados desfazer              Apaga rótulos nos dados coletados
+                          
     '''
 
     parameter_error =  False
     try:
-        if len(args) != 2:
+        if len(args) < 2 or len(args) > 3:
             parameter_error = True
-        if args[1] == "app_bd_create":
-            print("Cria Tabelas")
+            raise ValueError("Quantidade de argumentos inválido!")
+        elif args[1] == "cria_base":
+            print("Cria base")
             if f_confirmation():
                 result = model.f_create_tables(if_not_exists=True)
                 print("Concluído" if not result else "Interrompido")
-        elif args[1] == "app_bd_drop":
+        elif args[1] == "apaga_base":
             print("Apaga tabelas")
-            if f_confirmation():           
+            if f_confirmation():                         
                 result = model.f_drop_tables(if_exists=True)
                 print("Concluído" if not result else "Interrompido")
-        elif args[1] == "app_loading_initial":
+        elif args[1] == "carrega_planilha":
             print("Carrega os dados da planilha")
-            loading_initial.f_loading_initial()            
-        elif args[1] == "app_web_scraping":
-            print("\nInicia a coleta de dados dos egressos")
-            search_today, find_today = None, None
-            try:
-                result = input_timeout.get_answer(msg="\n(10 segundos) Pesquisar hoje = ")
-                search_today = 10 if result == None else int(result)
-                result = input_timeout.get_answer(msg="\n(10 segundos) Coletar hoje = ")
-                find_today = 10 if result == None else int(result)
-            except:
-                print(msg_error.format("função f_main", "Argumento search_today e find_today não identificados"))
-                raise
-            print("\nPesquisar hoje: {} e Coletar hoje: {}".format(search_today, find_today) )
-            web_scraping.f_web_scraping(search_today=search_today, find_today=find_today)
-            
-        elif args[1] == "app_attach_label":
-            print("Anexa rótulos nos dados coletados")
-            attach_label.f_attach_label()
-        elif args[1] == "help":
+            if len(args) == 2:
+                result = loading_initial.f_loading_initial()
+                print("Concluído" if result else "Interrompido")                
+            elif len(args) == 3 and args[2] == "com_cabecalho": 
+                result = loading_initial.f_loading_initial(with_header=True)
+                print("Concluído" if result else "Interrompido")
+            else:
+                parameter_error = True  
+        elif args[1] == "coleta_dados":
+            print("\nColeta de dados dos egressos")
+            if len(args) == 2:
+                web_scraping.f_web_scraping()
+            elif len(args) == 3 and args[2] == "login": 
+                result = web_scraping.f_web_scraping_login()
+                if result == "s":
+                    web_scraping.f_web_scraping()
+            else:
+                parameter_error = True  
+        elif args[1] == "marca_dados":
+            print("Rotula dados coletados")
+            if len(args) == 2:
+                attach_label.f_attach_label()
+            elif len(args) == 3 and args[2] == "desfazer": 
+                attach_label.f_remove_label()
+            else:
+                parameter_error = True             
+        elif args[1] == "ajuda":
             print(help)
         else:
             parameter_error = True
             
     except:
         logger.error( traceback.format_exc() )
+        if not parameter_error:
+            print(msg_error.format("função f_main", "O programa foi interrompido"))
+
     finally:
         if parameter_error:
             print(msg_error.format("função f_main", "Argumento não identificado"))
             print(help)
-        else:
-            print(msg_error.format("função f_main", "O programa foi interrompido"))
 
     return None
 

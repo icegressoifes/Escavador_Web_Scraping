@@ -14,63 +14,11 @@ import random
 import re
 
 
-def f_check_login(driver=None):
-	# url = "https://www.linkedin.com/feed/"
-	# driver.get( url )
-	# time.sleep(5)
-	# if driver.current_url in url:
-	# 	return True
-	# return False
-	pass
-
-
-
-def f_login(driver=None, user=None, password=None, remember=True):
-	# driver.get("https://www.linkedin.com/uas/login?session_redirect=%2Fvoyager%2FloginRedirect%2Ehtml&amp;fromSignIn=true&amp;trk=uno-reg-join-sign-in")
-	# try:
-	# 	# time.sleep(30)
-	# 	WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.TAG_NAME, 'body')))
-	# 	rememberme_checkbox = driver.find_element_by_xpath('//*[@id="app__container"]/main/div[2]/form/div[3]/label')
-	# 	input_user = driver.find_element_by_name('session_key')
-	# 	input_password = driver.find_element_by_name('session_password')
-	# 	button_submit = driver.find_element_by_tag_name('button')
-
-	# 	# cadeia de ações
-	# 	actions = ActionChains(driver)
-	# 	actions.pause( 4 )
-	# 	actions.move_to_element(input_user)
-	# 	actions.double_click(input_user)
-	# 	actions.pause(3)
-	# 	actions.send_keys(user)
-	# 	actions.pause(6)
-	# 	actions.move_to_element(input_password)
-	# 	actions.double_click(input_password)
-	# 	actions.pause(6)
-	# 	actions.send_keys(password)
-	# 	actions.pause(4)
-	# 	if remember:
-	# 		actions.move_to_element(rememberme_checkbox)
-	# 		actions.click(rememberme_checkbox)
-	# 		actions.pause( 2 )
-	# 	actions.move_to_element(button_submit)
-	# 	actions.click(button_submit)
-	# 	actions.perform()
-	# except:
-	# 	print("\nlinkedin_profile.f_login: Falha a realizar login!\n")
-
-	# finally:
-	# 	driver.get("https://www.linkedin.com/feed")
-	# 	time.sleep(20)
-	# 	pass
-	pass
-
-
-
 def f_get_link(driver=None, name_person=None, whole_name=None, sex=None):
 	list_content = []
 	total_links = set([])
 	quantity_found = 0
- 	cont_page = 4
+	cont_page = 4
 	name_without_accent = remove_caracter.removerAcentosECaracteresEspeciais(name_person)
 	whole_name_accent = remove_caracter.removerAcentosECaracteresEspeciais(whole_name)
 	try:
@@ -106,7 +54,7 @@ def f_get_link(driver=None, name_person=None, whole_name=None, sex=None):
 						if resultado:
 							
 							if description != "":
-								print(description)
+							
 								list_content.append( {"name": name, "description": description, "link": link} )
 				quantity_found = len(total_links)				
 			except:
