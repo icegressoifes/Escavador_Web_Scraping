@@ -417,3 +417,33 @@ def f_update_escavador(id=None, aluno_id=None, profile_url=None, date=None, prof
         print(e)
         return False
 
+
+
+
+def f_escavador_remove_label():
+    '''
+    Atualiza os dados do registro da combinacao na tabela Escavador de acordo com o id informado.\n
+    Os argumentos enviados como None (não preenchidos) serão armazenados como "null".
+   
+    Parâmetro
+    ----------
+            
+    Retorno
+    ----------
+        (boolean): 
+            True indica que foi concluído, False indica que não foi concluído.
+    '''    
+    
+    try:
+        query = Escavador.update(  aluno_id= None, profile_json= None)
+        query.execute()
+        return True
+        raise Exception ('O valor id, profile_url ou date não foram informado!')
+    except Exception as e:
+        print(e)
+        return False
+
+
+
+
+

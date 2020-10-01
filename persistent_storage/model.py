@@ -32,7 +32,7 @@ class BaseModel(Model):
             user = os.environ.get('USER').strip()
             password = os.environ.get('PASSWORD').strip()
             port = int(os.environ.get('PORT'))
-            database = PostgresqlDatabase(namedatabase, user=user, password=password, host=host, port=port)   
+            database = PostgresqlDatabase(namedatabase, user=user, password=password, host=host, port=port) 
         except:
             print(msg_error.format("classe BaseModel", "não foi possível estabelecer conexão com o banco  de dados"))
             logger.info( traceback.format_exc() )

@@ -91,8 +91,10 @@ def f_web_scraping(search_today=10, find_today=10):
                     raise Exception ("Escavador Get Link: {}".format(content['status']))
                 list_link = content['content']
                 quantity_found = content['quantity_found']
-            print("\nPerfis Encontrados: ", quantity_found)
+            
             print("\nScraper Links: CONCLUIU\n")
+            print("\nPerfis Encontrados: ", quantity_found)
+            print("\nPerfis Selecionados: ", len(list_link))
             ### Salva Backup
             backup.f_salva(combinacao= combinacao, list_link= list_link,quantity_found= quantity_found)
             # fecha navegador

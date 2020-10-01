@@ -110,11 +110,14 @@ def f_main(args):
             else:
                 parameter_error = True  
         elif args[1] == "marca_dados":
-            print("Rotula dados coletados")
+            print("Rotula dados coletados", end="")
             if len(args) == 2:
+                print()
                 attach_label.f_attach_label()
-            elif len(args) == 3 and args[2] == "desfazer": 
-                attach_label.f_remove_label()
+            elif len(args) == 3 and args[2] == "desfazer":
+                print(" desfazer")
+                if f_confirmation():   
+                    attach_label.f_remove_label()
             else:
                 parameter_error = True             
         elif args[1] == "ajuda":
