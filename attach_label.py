@@ -38,22 +38,6 @@ def f_attach_label():
         list_institution_name = dic_search_data["nome_instituicao"]
         list_formation = dic_search_data["grau_academico"]
         list_study_area = dic_search_data["nome_curso"]
-
-        # try:
-        #     file_name = open_file_gui.f_get_path()
-        #     lista = open_file_gui.f_open_file(file_name)
-        #     for line in lista:
-        #         institution, formation, study_area = open_file_gui.f_line_split(line, 2)
-        #         if institution.strip() != "": 
-        #            list_institution_name.append( institution.strip() )
-        #         if formation.strip() != "": 
-        #             list_formation.append( formation.strip() )
-        #         if study_area.strip() != "":
-        #             list_study_area.append( study_area.strip() )           
-        # except:
-        #     print(msg_error.format("função f_attach_label", "esperava uma planilha csv com as colunas (sem cabeçalho): 'nome da instituição | grau do curso |  nome do curso'"))
-        #     logger.error("Esperva uma planilha csv com colunas: nome da instituição | grau do curso |  nome do curso " +  traceback.format_exc() )
-        #     raise
                                             
         try:
 

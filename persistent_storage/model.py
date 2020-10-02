@@ -32,11 +32,11 @@ class BaseModel(Model):
             user = os.environ.get('USER').strip()
             password = os.environ.get('PASSWORD').strip()
             port = int(os.environ.get('PORT'))
-            # database = PostgresqlDatabase(namedatabase, user=user, password=password, host=host, port=port) 
-            database = MySQLDatabase(namedatabase, user=user, password=password, host=host, port=3306)
+            database = PostgresqlDatabase(namedatabase, user=user, password=password, host=host, port=port) 
+            # database = MySQLDatabase(namedatabase, user=user, password=password, host=host, port=3306)
         except:
             print(msg_error.format("classe BaseModel", "não foi possível estabelecer conexão com o banco  de dados"))
-            logger.info( traceback.format_exc() )
+            logger.error( traceback.format_exc() )
 
 class Aluno(BaseModel):
     '''
@@ -155,7 +155,7 @@ def f_create_tables(if_not_exists=False):
         concluded = False
     except:
         print(msg_error.format("função f_create_tables", "não foi possível criar as tabelas"))
-        logger.info( traceback.format_exc() )
+        logger.error( traceback.format_exc() )
     return concluded 
  
    
@@ -185,7 +185,7 @@ def f_drop_tables(if_exists=False):
         concluded = False        
     except Exception as e:
         print(msg_error.format("função f_drop_tables", "não foi possível apagar as tabelas"))
-        logger.info( traceback.format_exc() )        
+        logger.error( traceback.format_exc() )        
     return concluded     
 
 

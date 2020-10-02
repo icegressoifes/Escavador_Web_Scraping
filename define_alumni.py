@@ -43,7 +43,7 @@ def f_define_alumni(json_profile="", institution_name=[], formation=[], study_ar
         elif count >= 2:
             print("\nEducação: ", education)
             answer = input("\nÉ egresso? S ou N: ")
-            result = True if (answer.strip() in "S s") else False
+            result = True if answer.lower().strip() =="s" else False
         else:
             result = False
             

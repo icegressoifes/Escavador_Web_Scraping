@@ -9,6 +9,7 @@ import backup
 import time
 import random
 import shutil
+import json
 
 
 # Definicao de log
@@ -41,12 +42,27 @@ def f_web_scraping_login():
         
         
         
-def f_web_scraping(search_today=10, find_today=10):
+def f_web_scraping():
+    
+    
+    list_search_data = None
+    with open("config_coleta.json", "r") as json_file:
+        list_search_data = json.load(json_file)
+  
+    dic_configuration = list_search_data[0]
     
     driver = webdriver.f_open_browser()
+
     is_scrapered = False
-    waiting_time_between_pages = 65
-    waiting_time_between_combination = 300
+    time_between_pages = dic_configuration["tempo_entre_pagina"]
+    time_between_combination = dic_configuration["tempo_entre_busca"]
+    search_today = dic_configuration["pesquisar_hoje"]
+    find_today = dic_configuration["encontrado_hoje"]
+    
+    print("\nTempo entre páginas: {}\nTempo entre busca: {}\nNº Busca realizada hoje: {}\nNº de páginas salvas hoje: {}\n".format(time_between_pages, 
+                                                                                                                                time_between_combination,
+                                                                                                                                search_today,
+                                                                                                                                find_today))
 
     try:
         
@@ -129,7 +145,7 @@ def f_web_scraping(search_today=10, find_today=10):
                     # fecha navegador
                     webdriver.f_close_browser(driver=driver)
                     # tempo de espera entre cada página
-                    time.sleep(waiting_time_between_pages)
+                    time.sleep(time_between_pages)
 
                 # apaga link de list_link
                 del list_link[0]
@@ -144,7 +160,7 @@ def f_web_scraping(search_today=10, find_today=10):
             # pega as combinacoes de nomes
             list_combinacao = crud.f_get_combinacao(is_scrapered= is_scrapered)
             # espera o tempo entre cada combinacao
-            time.sleep( waiting_time_between_combination )
+            time.sleep( time_between_combination )
 
             search_today -= 1
             list_escavador_found_today = crud.f_get_escavador(date= str(date.today()))

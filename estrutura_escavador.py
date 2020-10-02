@@ -3,10 +3,15 @@ from bs4 import BeautifulSoup
 import json
 import re
 import logging
+import logging.config
+import traceback
 import sys
 
-# Definicao de logfind_elements
-logging.basicConfig(filename='error.log', filemode='w', level=logging.ERROR, format='%(levelname)s: %(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
+
+# Definicao de log
+logging.config.fileConfig('logconf.ini', disable_existing_loggers=False)
+logger = logging.getLogger(__name__)
+msg_error = "Aviso: "+__name__+".py - {}: {}. Para mais detalhes verifique o arquivo 'error.log'."
 
 
 def f_create_htmlsoup_from_file(name_file=None):
@@ -41,25 +46,29 @@ def f_get_overview(html_soup=None):
         h1_element = html_soup.select_one('#usuario > div.container.-rel > div > header > div > div.body > h1')
         name = h1_element.get_text()
     except:
-        logging.exception("f_get_overview get name overview error: {}".format( sys.exc_info() ) )
+        print(msg_error.format("função f_get_overview", "o nome do perfil não coletado"))
+        logger.error( traceback.format_exc() )
    
     
     # get localization
     localization = ""
     try:
         div_element = html_soup.find(id="endereco-profissional")
-        text = div_element.get_text()
+        ul_element = div_element.find("ul",class_="list-block")
+        text = ul_element.get_text()
         localization = f_prepare_text( text.strip() )
     except:
-        logging.exception("f_get_overview get localization overview error: {}".format( sys.exc_info() ) )        
-          
+        print(msg_error.format("função f_get_overview", "o endereço profissional não foi coletado"))
+        logger.error( traceback.format_exc() )
+                
     # get about
     about = ""
     try:
         div_element =  html_soup.select_one('#usuario > div.container.-rel > div > header > div > div.box.-flushHorizontal')
         about = div_element.get_text()
     except:
-       logging.exception("f_get_overview get about overview error: {}".format( sys.exc_info() ) )         
+        print(msg_error.format("função f_get_overview", "o resumo geral não foi coletado"))
+        logger.error( traceback.format_exc() )          
         
     return (name, localization, about)   
 
@@ -100,9 +109,9 @@ def f_get_education_list(html_soup=None):
                                   "ano_fim": ano_fim })    
           except:
             pass
-    except Exception as e:
-      print("ERRO ACADEMICO")
-      print(e)    
+    except:
+      print(msg_error.format("função f_get_education_list", "algumas informações acadêmica não foram coletadas"))
+      logger.error( traceback.format_exc() ) 
     
     return lst_dic_curso
 
@@ -154,9 +163,9 @@ def f_get_experience_list(html_soup=None):
                                     "ano_fim":ano_fim,
                                     "atividade":f_prepare_text( atividade ) })
 
-    except Exception as e:
-      print("ERRO PROFISSIONAL")
-      print(e)
+    except:
+      print(msg_error.format("função f_get_experience_list", "algumas informações profissional não foram coletadas"))
+      logger.error( traceback.format_exc() ) 
                 
     return lst_dic_profissao
     
