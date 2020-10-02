@@ -46,7 +46,7 @@ def f_get_overview(html_soup=None):
         h1_element = html_soup.select_one('#usuario > div.container.-rel > div > header > div > div.body > h1')
         name = h1_element.get_text()
     except:
-        print(msg_error.format("função f_get_overview", "o nome do perfil não coletado"))
+        print(msg_error.format("função f_get_overview", "o nome do perfil não foi coletado"))
         logger.error( traceback.format_exc() )
    
     
