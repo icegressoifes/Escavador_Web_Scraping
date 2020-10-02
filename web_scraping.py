@@ -5,7 +5,7 @@ from datetime import date
 import traceback
 import logging
 import logging.config
-import backup
+from escavador_scraper import backup
 import time
 import random
 import shutil
@@ -138,6 +138,12 @@ def f_web_scraping():
                     driver = webdriver.f_open_browser()                
                     content = escavador_profile.f_get_text(driver= driver, url_profile= content_link['link'])
                     if content['status'] == "RESTRICTED" or content['status'] == "ERROR":
+                        print("\nErro ao tentar capturar dados do link de página: {}\n".format( content_link['link'] ) )
+                        answer = input("Ainda deseja coletar essa página? (S/N): ")
+                        print()
+                        if answer.lower().strip() == "n":
+                           del list_link[0]
+                           backup.f_salva(combinacao= combinacao, list_link= list_link,quantity_found= quantity_found)
                         raise Exception ("Escavador Get Text: {}".format(content['status']) )
                     escavador = content['content']
                     # salva escavador

@@ -1,10 +1,9 @@
 from persistent_storage import crud
-import open_file_gui
 import traceback
 import logging
 import logging.config
-import estrutura_escavador
-import define_alumni
+from escavador_scraper import estrutura_escavador
+from escavador_scraper import define_alumni
 import json
 
 # Definicao de log

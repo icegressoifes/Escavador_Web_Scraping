@@ -1,6 +1,6 @@
-from data_prepare import generate_combination_name
+from escavador_scraper import generate_combination_name
 from persistent_storage import crud
-import open_file_gui
+from escavador_scraper import open_file_gui
 import logging
 import logging.config
 import traceback

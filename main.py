@@ -20,7 +20,6 @@ import attach_label
 import logging
 import logging.config
 import sys
-import input_timeout
 import traceback
 
 
