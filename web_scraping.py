@@ -59,7 +59,7 @@ def f_web_scraping():
     search_today = dic_configuration["pesquisar_hoje"]
     find_today = dic_configuration["encontrado_hoje"]
     
-    print("\nTempo entre páginas: {}\nTempo entre busca: {}\nNº Busca realizada hoje: {}\nNº de páginas salvas hoje: {}\n".format(time_between_pages, 
+    print("\nTempo entre páginas: {}\nTempo entre busca: {}\nNº Busca que serão realizadas hoje: {}\nNº de páginas que serão salvas hoje: {}\n".format(time_between_pages, 
                                                                                                                                 time_between_combination,
                                                                                                                                 search_today,
                                                                                                                                 find_today))
