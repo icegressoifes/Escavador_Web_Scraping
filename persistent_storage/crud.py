@@ -438,7 +438,6 @@ def f_escavador_remove_label():
         query = Escavador.update(  aluno_id= None, profile_json= None)
         query.execute()
         return True
-        raise Exception ('O valor id, profile_url ou date não foram informado!')
     except Exception as e:
         print(e)
         return False
