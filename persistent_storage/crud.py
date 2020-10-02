@@ -37,11 +37,12 @@ def f_save_aluno(name=None, sex=None, birth_date=None, year_start=None, year_end
     try:
         alunos =  f_get_aluno(name=name, birth_date=birth_date)
         if ( len(alunos) == 0):
-            return Aluno.create(name= name, birth_date= birth_date, sex= sex, year_start= year_start, year_end= year_end )
+            if name != "":            
+                return Aluno.create(name= name, birth_date= birth_date, sex= sex, year_start= year_start, year_end= year_end )
         return False
     except Exception as e:
         if '"aluno" violates check constraint "aluno_sex_check"' in str(e):
-            print("Erro: O sexo do aluno não foi informado!")
+            print("Erro: O sexo do aluno não foi informado!")    
         logger.error(" f_save_aluno " + str(e) )
         return False
 
