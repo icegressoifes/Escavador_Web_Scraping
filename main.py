@@ -1,17 +1,5 @@
 # coding: utf-8
-'''
-Programa principal que chama as funcionalidades do programa.
-Deve ser executador por linha de comando passando um argumento: 
 
-main.py <argumento>
-
-    app_bd_create             Cria as tabelas do banco de dados 
-    app_bd_drop               Apaga as tabelas do banco de dados
-    app_loading_initial       Carrega os dados da planilha
-    app_web_scraping          Inicia a coleta de dados dos egressos
-    app_attach_label          Anexa rótulos nos dados coletados
-    help                      Ajuda     
-'''
 import sys
 import persistent_storage.model as model
 import loading_initial

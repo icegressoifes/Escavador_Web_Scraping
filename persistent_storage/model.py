@@ -176,12 +176,12 @@ def f_drop_tables(if_exists=False):
     
     concluded = True    
     try:
-        Aluno.drop_table(safe=if_exists, cascade=True)
-        print("Tabela 'Aluno' apagada!")
-        Combinacao.drop_table(safe=if_exists, cascade=True)
-        print("Tabela 'Combinacao' apagada!")
         Escavador.drop_table(safe=if_exists, cascade=True)
         print("Tabela 'Escavador' apagada!")
+        Combinacao.drop_table(safe=if_exists, cascade=True)
+        print("Tabela 'Combinacao' apagada!")
+        Aluno.drop_table(safe=if_exists, cascade=True)
+        print("Tabela 'Aluno' apagada!")
         concluded = False        
     except Exception as e:
         print(msg_error.format("função f_drop_tables", "não foi possível apagar as tabelas"))
