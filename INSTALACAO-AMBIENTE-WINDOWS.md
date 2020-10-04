@@ -125,7 +125,7 @@ Visite o site https://chromedriver.chromium.org/downloads para baixar o ChromeDr
 	<figcaption>Figura 9 - Download do ChromeDriver</figcaption>
 </figure>
 
-Após clicar no link que representa a versão do navegador Chrome, deve escolher o arquivo compatível com o Sistema Operacional. Como mostra a Figura 10, o arquivo para o Windows é o que possui o nome 'chromedriver_win32.zip'. Depois de baixado o arquivo deve ser colocado dentro da pasta do programa. 
+Após clicar no link que representa a versão do navegador Chrome, deve escolher o arquivo compatível com o Sistema Operacional. Como mostra a Figura 10, o arquivo para o Windows é o que possui o nome 'chromedriver_win32.zip'. Depois de baixado o arquivo deve ser descompactado e colocado dentro da pasta do programa. 
 
 <figure>
 	<img src="documentacao/image/arquivo-chromedriver.jpg" alt="Selecione o arquivo do chromedriver" width="600">

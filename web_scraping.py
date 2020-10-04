@@ -109,8 +109,12 @@ def f_web_scraping():
                 quantity_found = content['quantity_found']
             
             print("\nScraper Links: CONCLUIU\n")
-            print("\nPerfis Encontrados: ", quantity_found)
-            print("\nPerfis Selecionados: ", len(list_link))
+            try:
+                print("\nPerfis Encontrados: ", quantity_found)
+                print("\nPerfis Selecionados: ", len(list_link))
+            except:
+                pass
+
             ### Salva Backup
             backup.f_salva(combinacao= combinacao, list_link= list_link,quantity_found= quantity_found)
             # fecha navegador
