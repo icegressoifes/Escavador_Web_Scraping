@@ -143,7 +143,7 @@ def f_web_scraping():
                     content = escavador_profile.f_get_text(driver= driver, url_profile= content_link['link'])
                     if content['status'] == "RESTRICTED" or content['status'] == "ERROR":
                         print("\nErro ao tentar capturar dados do link de página: {}\n".format( content_link['link'] ) )
-                        answer = input("Ainda deseja coletar essa página? (S/N): ")
+                        answer = input("Ainda deseja coletar essa página na próxima tentativa? (S/N): ")
                         print()
                         if answer.lower().strip() == "n":
                            del list_link[0]

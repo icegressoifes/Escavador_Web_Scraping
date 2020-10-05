@@ -30,8 +30,16 @@ def f_open_browser(driver=None, proxy=None):
 		driver = webdriver.Chrome(options=options, executable_path=r'{}'.format(diretorio))
 		return driver
 	except:
-		print(msg_error.format("função f_open_browser", "Não conseguiu abrir o navegador"))
+		
+		if "Message: 'chromedriver' executable needs to be in PATH" in str(traceback.format_exc()):
+   			print(msg_error.format("função f_open_browser", "ChromeDriver não encontrado"))		
+		elif "This version of ChromeDriver only supports Chrome version" in str(traceback.format_exc()):
+   			print(msg_error.format("função f_open_browser", "Versão do ChromeDriver está desatualizada"))
+		else:
+			print(msg_error.format("função f_open_browser", "Não conseguiu abrir o navegador"))
 		logger.error( traceback.format_exc() )
+		raise
+		
 
 def f_close_browser(driver=None):
 	try:
