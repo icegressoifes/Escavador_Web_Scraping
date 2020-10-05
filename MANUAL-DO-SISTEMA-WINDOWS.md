@@ -8,6 +8,9 @@ Escavador Web Scraping
 + [2.2.3. Adiciona variável de ambiente do banco de dados](#2.2.3.)
 + [2.2.4. Execução do programa Web Scraping](#2.2.4.)
 + [2.2.4.1. Executando funcionalidade cria base](#2.2.4.1.)
++ [2.2.4.2. Executando funcionalidade apaga base](#2.2.4.2.)
++ [2.2.4.3. Executando funcionalidade carrega planilha](#2.2.4.3.)
++ [2.2.4.4. Executando funcionalidade coleta de dados](#2.2.4.4.)
 
 
 ## <a name="2.2."></a> 2.2. Manual de uso do Sistema Windows

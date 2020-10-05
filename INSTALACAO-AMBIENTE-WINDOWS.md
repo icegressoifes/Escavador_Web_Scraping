@@ -114,14 +114,14 @@ Obs.: É preciso que o terminal esteja aberto na pasta do programa e o ambiente 
 Abra o navegador Google Chrome e verifique a versão atual do mesmo. Clique no menu do Chrome na parte superior direita, passe o ponteiro do mouse em Ajuda > Sobre o Google Chrome, de acordo com a Figura 8, seguindo as setas da direita para esquerda. O número que representa a versão do Chrome será utilizado para baixar o ChromeDriver
 
 <figure>
-	<img src="documentacao/image/versao-chrome.jpg" alt="Verificando a versão do Chrome" width="600">
+	<img src="documentacao/image/versao-chrome.jpg" alt="Verificando a versão do Chrome" width="700">
 	<figcaption>Figura 8 - Verificando a versão do Chrome</figcaption>
 </figure>
 
 Visite o site https://chromedriver.chromium.org/downloads para baixar o ChromeDriver, selecione a versão do ChromerDriver compatível com a versão do navegador. De acordo com a Figura 8, a versão ChromerDriver que deve ser baixado na Figura 9, é a versão 85.
 
 <figure>
-	<img src="documentacao/image/chromedriver-download.jpg" alt="Download do chromedriver" width="600">
+	<img src="documentacao/image/chromedriver-download.jpg" alt="Download do chromedriver" width="800">
 	<figcaption>Figura 9 - Download do ChromeDriver</figcaption>
 </figure>
 
