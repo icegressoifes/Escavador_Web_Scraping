@@ -73,26 +73,18 @@ python main.py ajuda
 
 ```
 
-```
+```  
     ----------------------------------------------------------------------------
-    Argumento básico
+    Argumentos
     ----------------------------------------------------------------------------
     cria_base                         Cria banco de dados
     apaga_base                        Apaga banco de dados
-    carrega_planilha                  Carrega os dados da planilha sem cabeçalho,
-                                      ou seja, armazena a primeira linha
+    carrega_planilha                  Carrega os dados da planilha csv
     coleta_dados                      Inicia a coleta de dados dos egressos
-    marca_dados                       Anexa rótulos nos dados coletados
-    ajuda                             Mensagem de ajuda                
-    
-    ----------------------------------------------------------------------------
-    Argumento composto
-    ----------------------------------------------------------------------------
-    carrega_planilha com_cabecalho    Carrega os dados da planilha com cabeçalho,
-                                      ou seja, ignora a primeira linha
     coleta_dados login                Abre navegador na página de login
+    marca_dados                       Anexa rótulos nos dados coletados   
     marca_dados desfazer              Apaga rótulos nos dados coletados
-    
+    ajuda                             Mensagem de ajuda       
 ```
 <figure>
 	<img src="documentacao/image/cmd-execucao-main.jpg" alt="Prompt de Comando conhecendo as funcionalidades" width="600">
@@ -101,10 +93,10 @@ python main.py ajuda
 
 Obs.: O programa só vai funcionar se: o ambiente virtual estiver ativo, os pacotes dependetes do programa forem instalados, e as variáveis de ambiente forem definidas para uma banco de dados existente.  
 
-### <a name="2.2.4.1."></a> 2.2.4.1.  Executando funcionalidade cria base
+### <a name="2.2.4.1."></a> 2.2.4.1. Executando funcionalidade cria base
 
 
-Digite o comando a seguir no Prompt de comando para criar o banco de dados. O resultado esperado está na Figura 5, uma mensagem informando o sucesso ou falha na execução dessa funcionalidade.
+Digite o comando a seguir no Prompt de comando para criar as tabelas do banco de dados. O resultado esperado está na Figura 5, uma mensagem informando o sucesso na execução dessa funcionalidade.
 
 ```
 python main.py cria_base
@@ -114,4 +106,52 @@ python main.py cria_base
 <figure>
 	<img src="documentacao/image/programa-cria-base.jpg" alt="Funcionalidade cria base" width="600">
 	<figcaption>Figura 5 - Funcionalidade cria base</figcaption>
+</figure>
+
+
+
+### <a name="2.2.4.2."></a> 2.2.4.2. Executando funcionalidade apaga base
+
+
+Digite o comando a seguir no Prompt de comando para apagar as tabelas do banco de dados. O resultado esperado está na Figura 6, uma mensagem informando o sucesso na execução dessa funcionalidade.
+
+```
+python main.py apaga_base
+
+```
+
+<figure>
+	<img src="documentacao/image/programa-apaga-base.jpg" alt="Funcionalidade apaga base" width="600">
+	<figcaption>Figura 6 - Funcionalidade apaga base</figcaption>
+</figure>
+
+
+### <a name="2.2.4.2."></a> 2.2.4.2. Executando funcionalidade carrega planilha
+
+
+Digite o comando a seguir no Prompt de comando para carregar a planilha CSV com os dados do aluno e salvar no banco de dados. Nesse funcionalidade espera-se que a planilha não tenha cabeçalho, pois o programa vai tentar armazenar a primeira linha da mesma. O resultado esperado está na Figura 7, uma janela esperando que o usuário selecione a planilha que será processada.
+```
+python main.py carrega_planilha
+
+```
+
+<figure>
+	<img src="documentacao/image/programa-carrega-planilha.jpg" alt="Funcionalidade carrega planilha" width="600">
+	<figcaption>Figura 7 - Funcionalidade carrega planilha </figcaption>
+</figure>
+
+
+A Figura 8 apresenta a mensagem de sucesso após a realização do processamento, isto é, após os dados serem salvos no banco de dados.
+
+
+<figure>
+	<img src="documentacao/image/programa-carrega-planilha2.jpg" alt="Funcionalidade carrega planilha" width="600">
+	<figcaption>Figura 8 - Funcionalidade carrega planilha </figcaption>
+</figure>
+
+Um exemplo de planilha que o programa espera é apresentado na Figura 9, ela tem a coluna Matrícula, Nome de Aluno, Data de Nascimento, Nome do curso, Ano de Início, Período de Início, Ano de fim, Período de fim e o Sexo do aluno. Obs.: Espera-se que a planilha tenha codificação UTF e o delimitador seja uma virgula.
+
+<figure>
+	<img src="documentacao/image/programa-carrega-planilha4.jpg" alt="Funcionalidade carrega planilha" width="600">
+	<figcaption>Figura 9 - Funcionalidade carrega planilha </figcaption>
 </figure>

@@ -41,23 +41,16 @@ def f_main(args):
     Comando esperado: python3 main.py <argumento>
     
     ----------------------------------------------------------------------------
-    Argumento básico
+    Argumentos
     ----------------------------------------------------------------------------
     cria_base                         Cria banco de dados
     apaga_base                        Apaga banco de dados
-    carrega_planilha                  Carrega os dados da planilha sem cabeçalho,
-                                      ou seja, armazena a primeira linha
+    carrega_planilha                  Carrega os dados da planilha csv
     coleta_dados                      Inicia a coleta de dados dos egressos
-    marca_dados                       Anexa rótulos nos dados coletados
-    ajuda                             Mensagem de ajuda                
-    
-    ----------------------------------------------------------------------------
-    Argumento composto
-    ----------------------------------------------------------------------------
-    carrega_planilha com_cabecalho    Carrega os dados da planilha com cabeçalho,
-                                      ou seja, ignora a primeira linha
     coleta_dados login                Abre navegador na página de login
+    marca_dados                       Anexa rótulos nos dados coletados   
     marca_dados desfazer              Apaga rótulos nos dados coletados
+    ajuda                             Mensagem de ajuda                
                           
     '''
 
@@ -78,14 +71,8 @@ def f_main(args):
                 print("Concluído" if not result else "Interrompido")
         elif args[1] == "carrega_planilha":
             print("Carrega os dados da planilha")
-            if len(args) == 2:
-                result = loading_initial.f_loading_initial()
-                print("Concluído" if result else "Interrompido")                
-            elif len(args) == 3 and args[2] == "com_cabecalho": 
-                result = loading_initial.f_loading_initial(with_header=True)
-                print("Concluído" if result else "Interrompido")
-            else:
-                parameter_error = True  
+            result = loading_initial.f_loading_initial(with_header=True)
+            print("Concluído" if result else "Interrompido")
         elif args[1] == "coleta_dados":
             print("\nColeta de dados dos egressos")
             if len(args) == 2:
