@@ -32,8 +32,8 @@ class BaseModel(Model):
             user = os.environ.get('USER').strip()
             password = os.environ.get('PASSWORD').strip()
             port = int(os.environ.get('PORT'))
-            database = PostgresqlDatabase(namedatabase, user=user, password=password, host=host, port=port) 
-            # database = MySQLDatabase(namedatabase, user=user, password=password, host=host, port=3306)
+            # database = PostgresqlDatabase(namedatabase, user=user, password=password, host=host, port=port) 
+            database = MySQLDatabase(namedatabase, user=user, password=password, host=host, port=3306)
         except:
             print(msg_error.format("classe BaseModel", "não foi possível estabelecer conexão com o banco  de dados"))
             logger.error( traceback.format_exc() )

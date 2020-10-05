@@ -73,19 +73,6 @@ python main.py ajuda
 
 ```
 
-```  
-    ----------------------------------------------------------------------------
-    Argumentos
-    ----------------------------------------------------------------------------
-    cria_base                         Cria banco de dados
-    apaga_base                        Apaga banco de dados
-    carrega_planilha                  Carrega os dados da planilha csv
-    coleta_dados                      Inicia a coleta de dados dos egressos
-    coleta_dados login                Abre navegador na página de login
-    marca_dados                       Anexa rótulos nos dados coletados   
-    marca_dados desfazer              Apaga rótulos nos dados coletados
-    ajuda                             Mensagem de ajuda       
-```
 <figure>
 	<img src="documentacao/image/cmd-execucao-main.jpg" alt="Prompt de Comando conhecendo as funcionalidades" width="600">
 	<figcaption>Figura 4 - Prompt de Comando conhecendo a funcionalidades do programa</figcaption>
@@ -126,10 +113,10 @@ python main.py apaga_base
 </figure>
 
 
-### <a name="2.2.4.2."></a> 2.2.4.2. Executando funcionalidade carrega planilha
-
+### <a name="2.2.4.3."></a> 2.2.4.3. Executando funcionalidade carrega planilha
 
 Digite o comando a seguir no Prompt de comando para carregar a planilha CSV com os dados do aluno e salvar no banco de dados. Nesse funcionalidade espera-se que a planilha não tenha cabeçalho, pois o programa vai tentar armazenar a primeira linha da mesma. O resultado esperado está na Figura 7, uma janela esperando que o usuário selecione a planilha que será processada.
+
 ```
 python main.py carrega_planilha
 
@@ -149,9 +136,44 @@ A Figura 8 apresenta a mensagem de sucesso após a realização do processamento
 	<figcaption>Figura 8 - Funcionalidade carrega planilha </figcaption>
 </figure>
 
-Um exemplo de planilha que o programa espera é apresentado na Figura 9, ela tem a coluna Matrícula, Nome de Aluno, Data de Nascimento, Nome do curso, Ano de Início, Período de Início, Ano de fim, Período de fim e o Sexo do aluno. Obs.: Espera-se que a planilha tenha codificação UTF e o delimitador seja uma virgula.
+Um exemplo de planilha que o programa espera é apresentado na Figura 9, ela deve ter nesta ordem as colunas: Matrícula, Nome de Aluno, Data de Nascimento, Nome do curso, Ano de Início, Período de Início, Ano de fim, Período de fim e o Sexo do aluno. Obs.: Espera-se que a planilha tenha o cabeçalho apresentado na imagem a seguir, tenha a codificação UTF-8 e o delimitador seja ou uma vírgula ou um ponto e vírgula.
 
 <figure>
-	<img src="documentacao/image/programa-carrega-planilha4.jpg" alt="Funcionalidade carrega planilha" width="600">
+	<img src="documentacao/image/programa-carrega-planilha4.jpg" alt="Funcionalidade carrega planilha" width="800">
 	<figcaption>Figura 9 - Funcionalidade carrega planilha </figcaption>
 </figure>
+
+
+
+### <a name="2.2.4.4."></a> 2.2.4.4. Executando funcionalidade coleta de dados
+
+Antes de executar a funcionalidade coleta de dados, deve-se criar um arquivo JSON nomeado `config_coleta.json` na pasta do programa, o JSON deve ser idêntico ao apresentado na Figura 10, podendo mudar somente os valores. Ele que define a configuração da coleta. Cada variável será apresentada a seguir:
+
+* `tempo_entre_pagina`: o valor desta variável representa o tempo em segundos que será esperado a mais entre a visita de uma página perfil e outra visita.
+
+* `tempo_entre_busca`: o valor desta variável representa o tempo em segundos que será esperado a mais entre uma pesquisa de combinação de nome e outra pesquisa.
+
+* `pesquisar_hoje`: o valor desta variável representa o máximo de pesquisas  de combinação de nome que poderão ser realizadas na data atual da execução do sistema.
+
+* `encontrado_hoje`: o valor desta variável representa o máximo de páginas de perfil que poderão ser salvas na data atual da execução do sistema.
+
+
+<figure>
+	<img src="documentacao/image/config-coleta.jpg" alt="Funcionalidade coleta de dados" width="500">
+	<figcaption>Figura 10 - Funcionalidade coleta de dados </figcaption>
+</figure>
+
+
+Depois de configurar o arquivo JSON, digite o comando a seguir no Prompt de comando para iniciar a coleta de dados através das páginas de perfil. O resultado esperado está na Figura 11, uma mensagem informando o sucesso na execução dessa funcionalidade.
+
+```
+python main.py coleta_dados
+
+```
+
+<figure>
+	<img src="documentacao/image/programa-coleta-dados.jpg" alt="Funcionalidade coleta de dados" width="600">
+	<figcaption>Figura 11 - Funcionalidade coleta de dados </figcaption>
+</figure>
+
+### <a name="2.2.4.5."></a> 2.2.4.5. Executando funcionalidade login para coleta de dados 
