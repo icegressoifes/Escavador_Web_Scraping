@@ -63,15 +63,16 @@ class Aluno(BaseModel):
     ''' 
     id = AutoField() 
     name = CharField() 
-    sex = FixedCharField(constraints=[Check("sex = 'F' OR sex = 'M'")], null=True, max_length=1)
+    sex = FixedCharField(null=True, max_length=1)
     birth_date  = DateField(null=True) 
     year_start = IntegerField(null=True) 
-    year_end = IntegerField(constraints=[Check("year_end >= year_start")], null=True)
+    year_end = IntegerField(null=True)
     class Meta:
         # restriction
         indexes = ((('name', 'birth_date'), True), ) # unique (name, birth_date)        
-        
-        
+        constraints=[Check("sex = 'F' OR sex = 'M'")]
+        constraints=[Check("year_end >= year_start")]
+                
 class Combinacao(BaseModel):
     '''
     Classe Combinacao (tabela) herda a conexão do banco de dados da classe BaseModel.    
