@@ -45,14 +45,21 @@ def f_web_scraping_login():
 def f_web_scraping():
     
     
-    list_search_data = None
-    with open("config_coleta.json", "r") as json_file:
-        list_search_data = json.load(json_file)
-  
-    dic_configuration = list_search_data[0]
+    dic_configuration_full = {}
+    dic_configuration = {}
     
+    try:
+        with open("configuracao.json", "r") as json_file:
+            dic_configuration_full = json.load(json_file)
+  
+        dic_configuration = dic_configuration_full["config_coleta"]
+    except:
+        print(msg_error.format("função f_web_scraping", "Não foi possível ler os dados do arquivo 'configuracao.json'"))
+        logger.info( traceback.format_exc() )
+        raise
+           
     driver = webdriver.f_open_browser()
-
+    
     is_scrapered = False
     time_between_pages = dic_configuration["tempo_entre_pagina"]
     time_between_combination = dic_configuration["tempo_entre_busca"]
@@ -176,7 +183,7 @@ def f_web_scraping():
             list_escavador_found_today = crud.f_get_escavador(date= str(date.today()))
 
     except:
-        print(msg_error.format("função f_web_scraping", "não foi continuar a raspagem"))
+        print(msg_error.format("função f_web_scraping", "Não foi possível continuar a raspagem"))
         logger.info( traceback.format_exc() )
     finally:
         print("\n\n\nPROGRAMA TERMINOU \n\n\n")

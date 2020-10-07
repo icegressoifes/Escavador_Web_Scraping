@@ -4,11 +4,13 @@ Realiza a conexao com o banco de dados.
 Cria tabelas e apaga tabelas.
 '''
 import os
-import psycopg2
 from peewee import *
 import logging
 import logging.config
 import traceback
+import pymysql
+
+
 
 logging.config.fileConfig('logconf.ini', disable_existing_loggers=False)
 logger = logging.getLogger(__name__)
@@ -24,16 +26,18 @@ class BaseModel(Model):
         '''
         Classe Meta define a conexão com o banco de dados.
         '''
+        
         namedatabase, user, password, host, port = None, None, None, None, None
+        
         try:
+            
             # environment variable
             host = os.environ.get('HOST').strip()
             namedatabase = os.environ.get('DATABASE').strip()
             user = os.environ.get('USER').strip()
             password = os.environ.get('PASSWORD').strip()
             port = int(os.environ.get('PORT'))
-            # database = PostgresqlDatabase(namedatabase, user=user, password=password, host=host, port=port) 
-            database = MySQLDatabase(namedatabase, user=user, password=password, host=host, port=3306)
+            database = MySQLDatabase(namedatabase, user=user, password=password, host=host, port=port)   
         except:
             print(msg_error.format("classe BaseModel", "não foi possível estabelecer conexão com o banco  de dados"))
             logger.error( traceback.format_exc() )
@@ -187,7 +191,6 @@ def f_drop_tables(if_exists=False):
         print(msg_error.format("função f_drop_tables", "não foi possível apagar as tabelas"))
         logger.error( traceback.format_exc() )        
     return concluded     
-
 
 if __name__ == '__main__':
 	print("Classe Model")

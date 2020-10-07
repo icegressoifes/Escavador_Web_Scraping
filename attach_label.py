@@ -16,10 +16,18 @@ def f_remove_label():
 
 def f_attach_label():
     
-    list_search_data = None
-    with open("config_marcacao.json", "r") as json_file:
-        list_search_data = json.load(json_file)
-  
+    dic_configuration_full = {}
+    list_search_data = []
+    
+    try:
+        with open("configuracao.json", "r") as json_file:
+            dic_configuration_full = json.load(json_file)
+
+        list_search_data = dic_configuration_full["config_marcacao"]
+    except:
+        print(msg_error.format("função f_attach_label", "Não foi possível ler os dados do arquivo 'configuracao.json'"))
+        logger.error( traceback.format_exc() )
+        raise         
 
     print("\nIdentificador das opções de pesquisa disponíveis: ")
     dic_option = {}

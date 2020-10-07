@@ -1,6 +1,6 @@
 from escavador_scraper import generate_combination_name
 from persistent_storage import crud
-from escavador_scraper import open_file_gui
+from escavador_scraper import open_file
 import logging
 import logging.config
 import traceback
@@ -13,16 +13,17 @@ msg_error = "Erro: "+__name__+".py - {}: {}. Para mais detalhes verifique o arqu
 
 
 def f_loading_initial(with_header=False):
-    file_name = open_file_gui.f_get_path()
-    lista = open_file_gui.f_open_file(file_name)
+    
+    file_name = open_file.f_get_path()
+    lista = open_file.f_open_file(file_name)
     index_initial = 1 if with_header else 0
     for linha in lista[index_initial: ]:
         nome, data, sexo, ano_inicio, ano_fim = None, None, None, None, None
         try:
-            coluna = open_file_gui.f_line_split(linha, 8)
+            coluna = open_file.f_line_split(linha, 8)
         except:
             print(msg_error.format("função f_loading_initial", "esperava uma planilha csv com as colunas: 'matricula | nome aluno | data nasc. | nome curso | ano inicial | periodo inicial | ano final | periodo final | sexo'"))
-            logger.error("Esperva uma planilha csv com colunas: matricula | nome aluno | data nasc. | nome curso | ano inicial | periodo inicial | ano final | periodo final | sexo " +  traceback.format_exc())   
+            logger.error("Esperava uma planilha csv com colunas: matricula | nome aluno | data nasc. | nome curso | ano inicial | periodo inicial | ano final | periodo final | sexo " +  traceback.format_exc())   
             raise           
         
         nome = coluna[1]
