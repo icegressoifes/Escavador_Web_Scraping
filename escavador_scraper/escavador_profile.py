@@ -25,6 +25,8 @@ def f_get_link(driver=None, name_person=None, whole_name=None, sex=None):
 		url = "https://www.escavador.com/busca?q={}&qo=p&f[pt][0]=curriculo".format(name_person)
 		continuar = True
 		driver.get(url)
+		print("titulo ", driver.title)
+		print("passou")
 		while continuar:
 			element = None
 			try:

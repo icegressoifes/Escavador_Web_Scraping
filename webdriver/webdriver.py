@@ -1,4 +1,8 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+
+
 import random
 import platform
 import logging
@@ -23,12 +27,19 @@ def f_open_browser(driver=None, proxy=None):
 		userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36' if platform.system() == "Windows" else "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36"
 		options.add_argument('user-agent={}'.format(userAgent))	
 		options.add_argument("start-maximized")
+		options.add_argument('window-size=1900,1080')    
 		options.add_argument('--headless')
-		options.add_argument("--user-data-dir=browser_cache")
+		options.add_argument('--disable-gpu')
+		options.add_argument('--disable-extensions')
+		options.add_argument("--disable-dev-shm-usage")
+		options.add_argument('--no-sandbox')
+		# options.add_argument("--user-data-dir=browser_cache")
 		options.add_experimental_option("excludeSwitches", ["enable-automation", "enable-logging"])
 		options.add_experimental_option('useAutomationExtension', False)
 		diretorio = './chromedriver.exe' if platform.system() == "Windows" else "./chromedriver"
-		driver = webdriver.Chrome(options=options, executable_path=r'{}'.format(diretorio))
+		driver = webdriver.Remote(command_executor='http://localhost:4444/wd/hub', desired_capabilities=DesiredCapabilities.CHROME, options=options)
+		# driver = webdriver.Chrome(options=options, executable_path=r'{}'.format(diretorio))
+
 		return driver
 	except:
 		
