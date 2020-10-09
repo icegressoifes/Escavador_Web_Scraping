@@ -25,17 +25,11 @@ def f_logout(driver=None):
 
 
 def f_login(driver=None, user=None, password=None):
-    
-    driver.get("https://www.escavador.com/login")
+    f_logout(driver)
     time.sleep(4)
-    
-    print("\n>>> Página Acessada: ", driver.title)
-    if driver.title != "Login | Escavador":
-        print("\nLogin detectado!")
-        print("\nLimpa dados do navegador...")
-        f_logout(driver)
-        driver.get("https://www.escavador.com/login")             
-    
+    driver.get("https://www.escavador.com/login")             
+
+    print("\n>>> Página Acessada: ", driver.title)    
     element_form = WebDriverWait(driver, 20).until(EC.visibility_of_element_located((By.NAME, 'login-form')))
     element_input_email = element_form.find_element_by_id("email")
     element_input_senha = element_form.find_element_by_id("senha")
