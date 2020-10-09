@@ -43,47 +43,53 @@ def f_main(args):
     ----------------------------------------------------------------------------
     Argumentos
     ----------------------------------------------------------------------------
-    cria_base                         Cria banco de dados
-    apaga_base                        Apaga banco de dados
-    carrega_planilha                  Carrega os dados da planilha csv
-    coleta_dados                      Inicia a coleta de dados dos egressos
-    coleta_dados login                Abre navegador na página de login
-    marca_dados                       Anexa rótulos nos dados coletados   
-    marca_dados desfazer              Apaga rótulos nos dados coletados
-    ajuda                             Mensagem de ajuda                
+    cria_base                            Cria banco de dados
+    apaga_base                           Apaga banco de dados
+    carrega_planilha                     Carrega os dados da planilha csv
+    coleta_dados                         Inicia a coleta de dados dos egressos
+    coleta_dados login <user> <pass>     Faz autenticação no site
+    coleta_dados logout                  Remove autenticação no site
+    marca_dados                          Anexa rótulos nos dados coletados   
+    marca_dados desfazer                 Apaga rótulos nos dados coletados
+    ajuda                                Mensagem de ajuda                
                           
     '''
 
     parameter_error =  False
     try:
-        if len(args) < 2 or len(args) > 3:
-            parameter_error = True
-            raise ValueError("Quantidade de argumentos inválido!")
-        elif args[1] == "cria_base":
+
+        if len(args)>1 and args[1] == "cria_base":
             print("Cria base")
             if f_confirmation():
                 result = model.f_create_tables(if_not_exists=True)
                 print("Concluído" if not result else "Interrompido")
-        elif args[1] == "apaga_base":
+        elif len(args)>1 and args[1] == "apaga_base":
             print("Apaga tabelas")
             if f_confirmation():                         
                 result = model.f_drop_tables(if_exists=True)
                 print("Concluído" if not result else "Interrompido")
-        elif args[1] == "carrega_planilha":
+        elif len(args)>1 and args[1] == "carrega_planilha":
             print("Carrega os dados da planilha")
             result = loading_initial.f_loading_initial(with_header=True)
             print("Concluído" if result else "Interrompido")
-        elif args[1] == "coleta_dados":
-            print("\nColeta de dados dos egressos")
+        elif len(args)>1 and args[1] == "coleta_dados":
+            print("\nColeta de dados dos egressos", end=" ")
             if len(args) == 2:
                 web_scraping.f_web_scraping()
-            elif len(args) == 3 and args[2] == "login": 
-                result = web_scraping.f_web_scraping_login()
+            elif len(args) == 5 and args[2] == "login": 
+                print("entrar")
+                result = web_scraping.f_web_scraping_login(user=args[3], password=args[4])
+                if result == "s":
+                    web_scraping.f_web_scraping()
+            elif len(args) == 3 and args[2] == "logout": 
+                print("sair")
+                result = web_scraping.f_web_scraping_logout()
                 if result == "s":
                     web_scraping.f_web_scraping()
             else:
-                parameter_error = True  
-        elif args[1] == "marca_dados":
+                parameter_error = True 
+            print()
+        elif len(args)>1 and args[1] == "marca_dados":
             print("Rotula dados coletados", end="")
             if len(args) == 2:
                 print()
@@ -94,7 +100,7 @@ def f_main(args):
                     attach_label.f_remove_label()
             else:
                 parameter_error = True             
-        elif args[1] == "ajuda":
+        elif len(args)>1 and args[1] == "ajuda":
             print(help)
         else:
             parameter_error = True

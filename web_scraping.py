@@ -17,29 +17,16 @@ logging.config.fileConfig('logconf.ini', disable_existing_loggers=False)
 logger = logging.getLogger(__name__)
 msg_error = "Erro: "+__name__+".py - {}: {}. Para mais detalhes verifique o arquivo 'error.log'."
 
+def f_web_scraping_logout():
+    driver = webdriver.f_open_browser()    
+    escavador_profile.f_logout(driver)
+    webdriver.f_close_browser(driver=driver) 
+    
 
-def f_web_scraping_login():
-    msg_user = '''\n
-    ------------------------------------------------
-     O navegador abriu para que seja feito o login!
-     Para prosseguir responda a confirmação a seguir.
-    ------------------------------------------------
-    '''
-    print(msg_user)
-    try:
-        # remove
-        shutil.rmtree('./browser_cache')
-    except:
-        pass
+def f_web_scraping_login(user, password):
     driver = webdriver.f_open_browser()
-    driver.get("https://www.escavador.com/login")
-    print()
-    result = input("Fez login? (S/N): ")
-    while result.strip().lower() != "s" and result.strip().lower() !="n" :
-        result = input("Fez login? (S/N): ")   
-    webdriver.f_close_browser(driver=driver)
-    return result.strip().lower()
-        
+    escavador_profile.f_login(driver=driver, user=user, password=password)
+    webdriver.f_close_browser(driver=driver)        
         
         
 def f_web_scraping():
