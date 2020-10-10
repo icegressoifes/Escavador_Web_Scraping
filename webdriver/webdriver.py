@@ -32,7 +32,7 @@ def f_open_browser(driver=None, proxy=None):
 		# options.add_argument('--disable-extensions')
 		# options.add_argument("--disable-dev-shm-usage")
 		options.add_argument('--no-sandbox')
-		options.add_argument("--user-data-dir=browser_cache")
+		options.add_argument("--user-data-dir=opt/browser_cache")
 		options.add_experimental_option("excludeSwitches", ["enable-automation", "enable-logging"])
 		options.add_experimental_option('useAutomationExtension', False)
 		driver = webdriver.Remote(command_executor='http://localhost:4444/wd/hub', desired_capabilities=DesiredCapabilities.CHROME, options=options)

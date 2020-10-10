@@ -15,14 +15,17 @@ import re
 
 def f_logout(driver=None):
     
-    driver.get("chrome://settings/clearBrowserData");
-    element_body = WebDriverWait(driver, 20).until(EC.visibility_of_element_located((By.TAG_NAME, 'body')))
-    element_select =  driver.execute_script("return arguments[0].querySelector('settings-ui').shadowRoot.querySelector('settings-main').shadowRoot.querySelector('settings-basic-page').shadowRoot.querySelector('settings-section > settings-privacy-page').shadowRoot.querySelector('settings-clear-browsing-data-dialog').shadowRoot.querySelector('#clearBrowsingDataDialog').querySelector('#clearFromBasic').shadowRoot.querySelector('#dropdownMenu');", element_body)
-    list_element_option = element_select.find_elements_by_tag_name("option")
-    for element_option in  list_element_option:
-        element_option.click()
-    driver.execute_script("arguments[0].querySelector('settings-ui').shadowRoot.querySelector('settings-main').shadowRoot.querySelector('settings-basic-page').shadowRoot.querySelector('settings-section > settings-privacy-page').shadowRoot.querySelector('settings-clear-browsing-data-dialog').shadowRoot.querySelector('#clearBrowsingDataDialog').querySelector('#clearBrowsingDataConfirm').click()", element_body)
-
+    driver.get("https://www.escavador.com/logout");
+    time.sleep(5)
+    try:    
+        element_body = WebDriverWait(driver, 20).until(EC.visibility_of_element_located((By.TAG_NAME, 'html')))
+        element_select =  driver.execute_script("return arguments[0].querySelector('settings-ui').shadowRoot.querySelector('settings-main').shadowRoot.querySelector('settings-basic-page').shadowRoot.querySelector('settings-section > settings-privacy-page').shadowRoot.querySelector('settings-clear-browsing-data-dialog').shadowRoot.querySelector('#clearBrowsingDataDialog').querySelector('#clearFromBasic').shadowRoot.querySelector('#dropdownMenu');", element_body)
+        list_element_option = element_select.find_elements_by_tag_name("option")
+        for element_option in  list_element_option:
+            element_option.click()
+        driver.execute_script("arguments[0].querySelector('settings-ui').shadowRoot.querySelector('settings-main').shadowRoot.querySelector('settings-basic-page').shadowRoot.querySelector('settings-section > settings-privacy-page').shadowRoot.querySelector('settings-clear-browsing-data-dialog').shadowRoot.querySelector('#clearBrowsingDataDialog').querySelector('#clearBrowsingDataConfirm').click()", element_body)
+    except:
+        pass
 
 def f_login(driver=None, user=None, password=None):
     f_logout(driver)
