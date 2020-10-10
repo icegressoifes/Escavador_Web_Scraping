@@ -73,8 +73,9 @@ def f_get_link(driver=None, name_person=None, whole_name=None, sex=None):
         url = "https://www.escavador.com/busca?q={}&qo=p&f[pt][0]=curriculo".format(name_person)
         continuar = True
         driver.get(url)
-        print("\n>>> Página Acessada: ", driver.title)
         while continuar:
+            print("\n\n>>> Página Acessada: ", driver.title)
+            print(">>> URL Acessada: ", driver.current_url)
             element = None
             try:
                 element = WebDriverWait(driver, 20).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="escavador-app"]/div[1]/p[1]')))
@@ -128,6 +129,8 @@ def f_get_text(driver=None, url_profile=None):
     html_content = ""
     try:
         driver.get(url_profile)
+        print("\n\n>>> Página Acessada: ", driver.title)
+        print(">>> URL Acessada: ", driver.current_url)        
         element = None
         try:
             element = WebDriverWait(driver, 20).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="escavador-app"]/div[1]/p[1]')))

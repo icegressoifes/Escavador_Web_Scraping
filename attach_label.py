@@ -55,7 +55,7 @@ def f_attach_label():
             # pega combinacoes de nomes do BD
             escavador_list = crud.f_get_escavador(profile_json= None)
             
-            msg = "Não há registros ou todos registros já foram processados!" if escavador_list == [] else "Há "+str(len(escavador_list))+" registros para processar!"
+            msg = "Não há registros ou todos registros já foram processados!\n" if escavador_list == [] else "Há "+str(len(escavador_list))+" registros para processar!\n"
             print(msg)
             
             while escavador_list != []:

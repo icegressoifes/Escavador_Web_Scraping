@@ -84,7 +84,7 @@ def f_web_scraping():
                 
             print("\nScraper Links: INICIOU\n")
             # abre navegador
-            list_link = None
+            list_link = []
             quantity_found = 0
             try:
                 ### Recupera Backup
@@ -118,7 +118,7 @@ def f_web_scraping():
             ##
             ## SEGUNDA PARTE: SCRAPER PERFIS
             ##
-            print("\nScraper Perfis: INICIOU\n")        
+            print("\n\n\nScraper Perfis: INICIOU\n")        
             # pega os dados da pagina
             while list_link != []:
                                 
