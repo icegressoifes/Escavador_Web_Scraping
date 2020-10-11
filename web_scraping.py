@@ -44,9 +44,7 @@ def f_web_scraping():
         print(msg_error.format("função f_web_scraping", "Não foi possível ler os dados do arquivo 'configuracao.json'"))
         logger.info( traceback.format_exc() )
         raise
-           
-    driver = webdriver.f_open_browser()
-    
+               
     is_scrapered = False
     time_between_pages = dic_configuration["tempo_entre_pagina"]
     time_between_combination = dic_configuration["tempo_entre_busca"]
@@ -75,14 +73,16 @@ def f_web_scraping():
             ##
             ## PRIMEIRA PARTE: SCRAPER LINKS
             ##
+                      
+            driver = webdriver.f_open_browser()            # pega combinacao de nome da lista
             
-            # pega combinacao de nome da lista
             combinacao = list_combinacao[0]
             print("\nID COMBINACAO: {} | NOME COMBINACAO: {}\n".format(combinacao['id'],combinacao['name']))
             lst_aluno = crud.f_get_aluno(id= combinacao['aluno_id'])
             aluno = lst_aluno[0]
                 
             print("\nScraper Links: INICIOU\n")
+            
             # abre navegador
             list_link = []
             quantity_found = 0

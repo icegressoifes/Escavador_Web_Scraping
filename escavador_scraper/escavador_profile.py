@@ -82,7 +82,7 @@ def f_get_link(driver=None, name_person=None, whole_name=None, sex=None):
             except Exception as e:
                 pass
             if element != None:
-                return {"status":"RESTRICTED", "content": list_content}
+                return {"status":"RESTRICTED", "content":list_content, "quantity_found":quantity_found}
             element = WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.CLASS_NAME, "list-search")))
             try:
                 list_search_result = element.find_elements_by_class_name("item")

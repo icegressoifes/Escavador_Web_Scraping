@@ -34,7 +34,11 @@ def f_restaura():
 	except:
 		print("\nbackup.f_restaura: Erro ao restaurar o arquivo de backup. \n")
 		logging.exception("\nbackup.f_restaura: {}\n".format( sys.exc_info() ) )
-		return False
+		return 	{
+					"combinacao": None,
+					"list_link": None,
+					"quantity_found": None
+				}
 
 
 
