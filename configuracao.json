@@ -25,7 +25,7 @@
     "config_coleta":
                         {
                             "tempo_entre_pagina": 65,
-                            "tempo_entre_busca": 60,
+                            "tempo_entre_busca": 200,
                             "pesquisar_hoje": 10,
                             "encontrado_hoje": 10
                         }
