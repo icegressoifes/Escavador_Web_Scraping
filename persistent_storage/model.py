@@ -41,6 +41,9 @@ class BaseModel(Model):
         except:
             print(msg_error.format("classe BaseModel", "não foi possível estabelecer conexão com o banco  de dados"))
             logger.error( traceback.format_exc() )
+            
+class  LongTextField ( TextField ):
+     field_type  =  'LONGTEXT'
 
 class Aluno(BaseModel):
     '''
@@ -130,8 +133,8 @@ class Escavador(BaseModel):
     profile_name = CharField()
     profile_url = CharField()
     date = DateField()
-    profile_page = TextField() 
-    profile_json = TextField(null=True, default=True)
+    profile_page = LongTextField() 
+    profile_json = LongTextField(null=True, default=True)
     
 
   
