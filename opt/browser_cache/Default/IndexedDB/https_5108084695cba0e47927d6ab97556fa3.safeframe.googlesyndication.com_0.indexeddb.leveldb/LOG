@@ -1,5 +1,0 @@
-2020/10/11-15:01:46.238 2f9b Reusing MANIFEST /home/user/Documents/iniciacaocientifica/Escavador_Web_Scraping/opt/browser_cache/Default/IndexedDB/https_5108084695cba0e47927d6ab97556fa3.safeframe.googlesyndication.com_0.indexeddb.leveldb/MANIFEST-000001
-2020/10/11-15:01:55.274 2f9b Level-0 table #5: started
-2020/10/11-15:01:55.280 2f9b Level-0 table #5: 439 bytes OK
-2020/10/11-15:01:55.290 2f9b Delete type=0 #3
-2020/10/11-15:01:55.290 2f9b Manual compaction at level-0 from (begin) .. (end); will stop at (end)
