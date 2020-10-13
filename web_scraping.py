@@ -56,6 +56,7 @@ def f_web_scraping():
                                                                                                                                 search_today,
                                                                                                                                 find_today))
 
+    driver = None
     try:
         
         print("\n\nPROGRAMA INICIOU\n\n")
