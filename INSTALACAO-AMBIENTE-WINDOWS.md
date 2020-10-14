@@ -109,25 +109,25 @@ pip3 install -r requirements.txt
 Obs.: É preciso que o terminal esteja aberto na pasta do programa e o ambiente esteja ativado. <br>
 
 
-### <a name="1.2.7."></a> 1.2.7. Download do ChromeDriver
+### <a name="1.2.7."></a> 1.2.7. Servidor WebDriver remoto
 
-Abra o navegador Google Chrome e verifique a versão atual do mesmo. Clique no menu do Chrome na parte superior direita, passe o ponteiro do mouse em Ajuda > Sobre o Google Chrome, de acordo com a Figura 8, seguindo as setas da direita para esquerda. O número que representa a versão do Chrome será utilizado para baixar o ChromeDriver
+Instale o Docker no Window: https://docs.docker.com/docker-for-windows/install
 
-<figure>
-	<img src="documentacao/image/versao-chrome.jpg" alt="Verificando a versão do Chrome" width="700">
-	<figcaption>Figura 8 - Verificando a versão do Chrome</figcaption>
-</figure>
+Baixe e execute a image docker que contém o Selenium e o WebDriver remoto, de acordo com o comando abaixo.
 
-Visite o site https://chromedriver.chromium.org/downloads para baixar o ChromeDriver, selecione a versão do ChromerDriver compatível com a versão do navegador. De acordo com a Figura 8, a versão ChromerDriver que deve ser baixado na Figura 9, é a versão 85.
+```
+docker pull selenium/standalone-chrome
 
-<figure>
-	<img src="documentacao/image/chromedriver-download.jpg" alt="Download do chromedriver" width="800">
-	<figcaption>Figura 9 - Download do ChromeDriver</figcaption>
-</figure>
+docker run --rm -d -p 4444:4444 --shm-size=2g selenium/standalone-chrome
 
-Após clicar no link que representa a versão do navegador Chrome, deve escolher o arquivo compatível com o Sistema Operacional. Como mostra a Figura 10, o arquivo para o Windows é o que possui o nome 'chromedriver_win32.zip'. Depois de baixado o arquivo deve ser descompactado e colocado dentro da pasta do programa. 
+```
 
-<figure>
-	<img src="documentacao/image/arquivo-chromedriver.jpg" alt="Selecione o arquivo do chromedriver" width="600">
-	<figcaption>Figura 10 - Selecione o arquivo do chromedriver</figcaption>
-</figure>
+Quando estiver em execução, abra o `bash` do docker usando o comando abaixo, substituindo `<id>` pelo valor do container id:
+
+
+```
+docker exec -it <id> /bin/bash
+
+```
+
+Dentro do bash do container crie e de permissão de escrita para a pasta `opt/browser_cache`.
