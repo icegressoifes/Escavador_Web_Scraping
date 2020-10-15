@@ -113,7 +113,7 @@ Obs.: É preciso que o terminal esteja aberto na pasta do programa e o ambiente 
 
 Instale o Docker no Windows: https://docs.docker.com/docker-for-windows/install
 
-Entre no diretório Selenium onde está localizado o `Dockerfile` e `docker-compose.yaml`, execute o comando a seguir: 
+Entre no diretório docker, do programa Web Scraping, onde está localizado o `Dockerfile` e `docker-compose.yaml`, execute o comando a seguir: 
 
 
 ```
