@@ -9,7 +9,7 @@ Escavador Web Scraping
 + [1.2.4. Criação do Ambiente Virtual](#1.2.4.)
 + [1.2.5. Ativação do Ambiente Virtual](#1.2.5.)
 + [1.2.6. Instalação dos pacotes dependetes](#1.2.6.)
-+ [1.2.7. Download do chromedriver](#1.2.7.)
++ [1.2.7. Servidor WebDriver remoto (Docker)](#1.2.7.)
 
 ## <a name="1.2."></a> 1.2. Instalação e Configuração do Ambiente Windows
 
@@ -109,7 +109,7 @@ pip3 install -r requirements.txt
 Obs.: É preciso que o terminal esteja aberto na pasta do programa e o ambiente esteja ativado. <br>
 
 
-### <a name="1.2.7."></a> 1.2.7. Servidor WebDriver remoto
+### <a name="1.2.7."></a> 1.2.7. Servidor WebDriver remoto (Docker)
 
 Instale o Docker no Windows: https://docs.docker.com/docker-for-windows/install
 
