@@ -111,23 +111,14 @@ Obs.: É preciso que o terminal esteja aberto na pasta do programa e o ambiente 
 
 ### <a name="1.2.7."></a> 1.2.7. Servidor WebDriver remoto
 
-Instale o Docker no Window: https://docs.docker.com/docker-for-windows/install
+Instale o Docker no Windows: https://docs.docker.com/docker-for-windows/install
 
-Baixe e execute a image docker que contém o Selenium e o WebDriver remoto, de acordo com o comando abaixo.
-
-```
-docker pull selenium/standalone-chrome
-
-docker run --rm -d -p 4444:4444 --shm-size=2g selenium/standalone-chrome
-
-```
-
-Quando estiver em execução, abra o `bash` do docker usando o comando abaixo, substituindo `<id>` pelo valor do container id:
+Entre no diretório Selenium onde está localizado o `Dockerfile` e `docker-compose.yaml`, execute o comando a seguir: 
 
 
 ```
-docker exec -it <id> /bin/bash
+docker-compose up -d
 
 ```
 
-Dentro do bash do container crie e de permissão de escrita para a pasta `opt/browser_cache`.
+Obs.: Se não funcionar, execute o comando como administrador do Windows.
