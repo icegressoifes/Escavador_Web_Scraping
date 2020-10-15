@@ -82,7 +82,7 @@ python main.py ajuda
 ```
 
 <figure>
-	<img src="documentacao/image/programa-ajuda.jpg" alt="Funcionalidades de ajuda" width="600">
+	<img src="https://github.com/icegressoifes/Escavador_Web_Scraping/blob/master/documentacao/image/programa-ajuda.jpg" alt="Funcionalidades de ajuda" width="600">
 	<figcaption>Figura 4 - Funcionalidades de ajuda</figcaption>
 </figure>
 
