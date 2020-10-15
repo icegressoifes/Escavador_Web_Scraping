@@ -32,7 +32,7 @@ virtualenv env
 <figure>
 	<img src="documentacao/image/cmd-cria-env.jpg" alt="Prompt de Comando cria env" width="600">
 	<figcaption>Figura 1 - Prompt de Comando cria env</figcaption>
-</figure>
+</figure> <br> <br>
 
 Obs.: É preciso abrir o terminal dentro da pasta do programa. <br>
 Só é necessário executar esse comando se a pasta  env não existir dentro da pasta do programa.
@@ -47,7 +47,7 @@ env\Scripts\activate
 <figure>
 	<img src="documentacao/image/cmd-env-ativacao.jpg" alt="Prompt de Comando ativação env" width="600">
 	<figcaption>Figura 2 - Prompt de Comando ativação env</figcaption>
-</figure>
+</figure> <br> <br>
 
 Obs.: É preciso abrir o terminal dentro da pasta do programa, mas fora da pasta env. <br>
 O ambiente está ativado quando é apresentado `(env)`.
@@ -67,7 +67,7 @@ set PORT=xxx
 <figure>
 	<img src="documentacao/image/cmd-variavel-env.jpg" alt="Prompt de Comando define variável ambiente" width="600">
 	<figcaption>Figura 3 - Prompt de Comando define variável de ambiente</figcaption>
-</figure>
+</figure> <br> <br>
 
 Obs.: HOST, DATABASE, USER, PASSWORD e PORT são variáveis de ambiente para a conexão com o Banco de Dados. <br>
 É preciso que o terminal esteja aberto na pasta do programa e o ambiente esteja ativado. 
@@ -84,7 +84,7 @@ python main.py ajuda
 <figure>
 	<img src="documentacao/image/programa-ajuda.jpg" alt="Funcionalidades de ajuda" width="600">
 	<figcaption>Figura 4 - Funcionalidades de ajuda</figcaption>
-</figure>
+</figure> <br> <br>
 
 Obs.: O programa só vai funcionar se: o ambiente virtual estiver ativo, os pacotes dependetes do programa forem instalados, e as variáveis de ambiente forem definidas para uma banco de dados existente.  
 
@@ -101,7 +101,7 @@ python main.py cria_base
 <figure>
 	<img src="documentacao/image/programa-cria-base.jpg" alt="Funcionalidade cria base" width="600">
 	<figcaption>Figura 5 - Funcionalidade cria base</figcaption>
-</figure>
+</figure> <br> <br>
 
 
 
@@ -118,7 +118,7 @@ python main.py apaga_base
 <figure>
 	<img src="documentacao/image/programa-apaga-base.jpg" alt="Funcionalidade apaga base" width="600">
 	<figcaption>Figura 6 - Funcionalidade apaga base</figcaption>
-</figure>
+</figure> <br> <br>
 
 
 ### <a name="2.2.4.3."></a> 2.2.4.3. Funcionalidade carrega planilha
@@ -133,7 +133,7 @@ python main.py carrega_planilha
 <figure>
 	<img src="documentacao/image/programa-carrega-planilha.jpg" alt="Funcionalidade carrega planilha" width="600">
 	<figcaption>Figura 7 - Funcionalidade carrega planilha </figcaption>
-</figure>
+</figure> <br> <br>
 
 
 A Figura 8 apresenta o arquivo JSON  de configuração, nomeado `configuracao.json`, que define o caminho do arquivo da planilha através de um texto informado no atributo 'dir_planilha'.
@@ -141,14 +141,14 @@ A Figura 8 apresenta o arquivo JSON  de configuração, nomeado `configuracao.js
 <figure>
 	<img src="documentacao/image/programa-carrega-planilha2.jpg" alt="Funcionalidade carrega planilha" width="900">
 	<figcaption>Figura 8 - Configuração de carrega planilha </figcaption>
-</figure>
+</figure> <br> <br>
 
 O formato da planilha que o programa espera como entrada é apresentado na Figura 9, ela deve ter nesta ordem as colunas: Matrícula, Nome de Aluno, Data de Nascimento, Nome do curso, Ano de Início, Período de Início, Ano de fim, Período de fim e o Sexo do aluno. Obs.: Espera-se que a planilha tenha o cabeçalho apresentado na imagem a seguir, tenha a codificação UTF-8 e o delimitador seja ou uma vírgula ou um ponto e vírgula.
 
 <figure>
 	<img src="documentacao/image/programa-carrega-planilha3.jpg" alt="Formato da planilha" width="800">
 	<figcaption>Figura 9 - Formato da planilha </figcaption>
-</figure>
+</figure> <br> <br>
 
 
 
@@ -164,7 +164,7 @@ python main.py coleta_dados login <user> <password>
 <figure>
 	<img src="documentacao/image/programa-coleta-dados-login.jpg" alt="Funcionalidade de login para coleta de dados" width="600">
 	<figcaption>Figura 10 - Funcionalidade de login para coleta de dados </figcaption>
-</figure>
+</figure> <br> <br>
 
 ### <a name="2.2.4.5."></a> 2.2.4.5. Funcionalidade coleta de dados
 
@@ -179,7 +179,7 @@ python main.py coleta_dados
 <figure>
 	<img src="documentacao/image/programa-coleta-dados.jpg" alt="Funcionalidade coleta de dados" width="600">
 	<figcaption>Figura 11 - Funcionalidade coleta de dados </figcaption>
-</figure>
+</figure> <br> <br>
 
 
 Antes de executar a funcionalidade coleta de dados certifique-se que atributo `config_coleta` do JSON nomeado `configuracao.json` esteja configurado com os valores de:
@@ -198,7 +198,7 @@ A figura 12 apresenta um exemplo de valores de configuração do atributo `confi
 <figure>
 	<img src="documentacao/image/programa-confi-coleta.jpg" alt="configuração de coleta de dados" width="500">
 	<figcaption>Figura 12 - Configuração de coleta de dados </figcaption>
-</figure>
+</figure> <br> <br>
 
 
 
@@ -213,7 +213,7 @@ python main.py coleta_dados logout
 <figure>
 	<img src="documentacao/image/programa-coleta-dados-logout.jpg" alt="Funcionalidade logout da coleta de dados" width="600">
 	<figcaption>Figura 13 - Funcionalidade logout da coleta de dados </figcaption>
-</figure>
+</figure> <br> <br>
 
 
 
@@ -228,7 +228,7 @@ python main.py coleta_dados marca_dados
 <figure>
 	<img src="documentacao/image/programa-marca-dados.jpg" alt="Funcionalidade marcação de dados" width="600">
 	<figcaption>Figura 14 - Funcionalidade marca dados </figcaption>
-</figure>
+</figure> <br> <br>
 
 Antes de executar a funcionalidade marcação de dados certifique-se que atributo `config_marcacao` do JSON nomeado `configuracao.json` esteja configurado com os valores dos cursos. Como apresentado na Figura 15, há uma lista com informação de cada curso. As informações dos cursos ficam agrupadas em chaves (`{...}`). Cada grupo tem os atributos: `identificador`, `nome_instituicao`, `grau_academico` e `nome_curso`. Veja a seguir o que cada um representa:
 
@@ -244,7 +244,7 @@ Antes de executar a funcionalidade marcação de dados certifique-se que atribut
 <figure>
 	<img src="documentacao/image/programa-marca-dados-config.jpg" alt="Configuração de marcaccao de dados" width="800">
 	<figcaption>Figura 15 - Configuração de marca dados  </figcaption>
-</figure>
+</figure> <br> <br>
 
 ### <a name="2.2.4.8."></a> 2.2.4.8. Funcionalidade desfazer marcação de dados 
 
@@ -257,7 +257,7 @@ python main.py coleta_dados marca_dados desfazer
 <figure>
 	<img src="documentacao/image/programa-marca-dados-desfazer.jpg" alt="Funcionalidade desfazer marcação de dados " width="600">
 	<figcaption>Figura 16 - Funcionalidade desfazer marcação de dados  </figcaption>
-</figure>
+</figure> <br> <br>
 
 
 ### <a name="2.2.5."></a> 2.2.5. Arquivo de configuração do Web Scraping
