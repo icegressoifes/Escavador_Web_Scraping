@@ -1,7 +1,6 @@
 # coding: utf-8
 
 import sys
-import persistent_storage.model as model
 import loading_initial
 import web_scraping
 import attach_label
@@ -38,13 +37,11 @@ def f_main(args):
     '''
     
     help = '''
-    Comando esperado: python3 main.py <argumento>
+    Comando esperado: main.py <argumento>
     
     ----------------------------------------------------------------------------
     Argumentos
     ----------------------------------------------------------------------------
-    cria_base                            Cria banco de dados
-    apaga_base                           Apaga banco de dados
     carrega_planilha                     Carrega os dados da planilha csv
     coleta_dados                         Inicia a coleta de dados dos egressos
     coleta_dados login <user> <pass>     Faz autenticação no site
@@ -58,17 +55,7 @@ def f_main(args):
     parameter_error =  False
     try:
 
-        if len(args)>1 and args[1] == "cria_base":
-            print("Cria base")
-            if f_confirmation():
-                result = model.f_create_tables(if_not_exists=True)
-                print("Concluído" if not result else "Interrompido")
-        elif len(args)>1 and args[1] == "apaga_base":
-            print("Apaga tabelas")
-            if f_confirmation():                         
-                result = model.f_drop_tables(if_exists=True)
-                print("Concluído" if not result else "Interrompido")
-        elif len(args)>1 and args[1] == "carrega_planilha":
+        if len(args)>1 and args[1] == "carrega_planilha":
             print("Carrega os dados da planilha")
             result = loading_initial.f_loading_initial(with_header=True)
             print("Concluído" if result else "Interrompido")
