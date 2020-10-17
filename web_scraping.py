@@ -41,7 +41,7 @@ def f_web_scraping_login():
         raise
     
     driver = webdriver.f_open_browser()
-    escavador_profile.f_login(driver=driver, user=dic_configuration["user"], password=dic_configuration["password"] )
+    escavador_profile.f_login(driver=driver, user=dic_configuration["usuario"], password=dic_configuration["senha"] )
     webdriver.f_close_browser(driver=driver)        
         
         
