@@ -37,14 +37,14 @@ def f_main(args):
     '''
     
     help = '''
-    Comando esperado: main.py <argumento>
+    Comando esperado: python main.py <argumento>
     
     ----------------------------------------------------------------------------
     Argumentos
     ----------------------------------------------------------------------------
     carrega_planilha                     Carrega os dados da planilha csv
     coleta_dados                         Inicia a coleta de dados dos egressos
-    coleta_dados login <user> <pass>     Faz autenticação no site
+    coleta_dados login                   Faz autenticação no site
     coleta_dados logout                  Remove autenticação no site
     marca_dados                          Anexa rótulos nos dados coletados   
     marca_dados desfazer                 Apaga rótulos nos dados coletados
@@ -63,11 +63,9 @@ def f_main(args):
             print("\nColeta de dados dos egressos", end=" ")
             if len(args) == 2:
                 web_scraping.f_web_scraping()
-            elif len(args) == 5 and args[2] == "login": 
+            elif len(args) == 3 and args[2] == "login": 
                 print("entrar")
-                result = web_scraping.f_web_scraping_login(user=args[3], password=args[4])
-                if result == "s":
-                    web_scraping.f_web_scraping()
+                result = web_scraping.f_web_scraping_login()
             elif len(args) == 3 and args[2] == "logout": 
                 print("sair")
                 result = web_scraping.f_web_scraping_logout()

@@ -23,10 +23,27 @@ def f_web_scraping_logout():
     webdriver.f_close_browser(driver=driver) 
     
 
-def f_web_scraping_login(user, password):
+
+def f_web_scraping_login():
+    
+    dic_configuration_full = {}
+    dic_configuration = {}
+  
+    try:
+        with open("configuracao.json", "r") as json_file:
+            dic_configuration_full = json.load(json_file)
+  
+        dic_configuration = dic_configuration_full["login"]
+
+    except:
+        print(msg_error.format("função f_web_scraping_login", "Não foi possível ler os dados do arquivo 'configuracao.json'"))
+        logger.info( traceback.format_exc() )
+        raise
+    
     driver = webdriver.f_open_browser()
-    escavador_profile.f_login(driver=driver, user=user, password=password)
+    escavador_profile.f_login(driver=driver, user=dic_configuration["user"], password=dic_configuration["password"] )
     webdriver.f_close_browser(driver=driver)        
+        
         
         
 def f_web_scraping():
