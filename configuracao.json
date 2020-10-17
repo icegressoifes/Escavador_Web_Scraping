@@ -2,8 +2,8 @@
     "dir_planilha": "./csv/tad_egressos.csv",
 
     "login": {
-                "user":"icegressoifes@gmail.com",
-                "password":"icegressoifes"
+                "usuario":"icegressoifes@gmail.com",
+                "senha":"icegressoifes"
              },
 
     "config_marcacao": [
